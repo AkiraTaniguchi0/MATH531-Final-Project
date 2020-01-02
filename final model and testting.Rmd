@@ -1,0 +1,32 @@
+
+###import datasets Master1 and MasterNoDome
+###you need to install.package("dplyr")
+
+```{r}
+attach(Master1)
+summary(x<-lm(O_RushY~Tempurature+Percipitation))
+summary(lm(O_RushY~Tempurature+Percipitation+Difference))
+summary(lm(O_RushY~Tempurature+Percipitation+Humidity))##best
+summary(lm(O_RushY~Tempurature+Percipitation+Difference+Humidity))
+summary(lm(O_RushY~Tempurature+Percipitation+Wind))
+summary(y<-lm(O_RushY~Tempurature+Difference+Percipitation+Humidity))
+summary(z<-lm(O_RushY~Tempurature+Humidity+Difference+Percipitation+Wind))
+vif(z)
+cor_test<-dplyr::select(MasterNoDome, Tempurature,Humidity,Percipitation,Wind,Difference)
+cor(cor_test)
+
+```
+```{r}
+attach(MasterNoDome)
+summary(x<-lm(O_RushY~Tempurature+Percipitation))
+summary(lm(O_RushY~Tempurature+Percipitation+Difference))
+summary(lm(O_RushY~Tempurature+Percipitation+Humidity))##best
+summary(lm(O_RushY~Tempurature+Percipitation+Difference+Humidity))
+summary(lm(O_RushY~Tempurature+Percipitation+Wind))
+summary(y<-lm(O_RushY~Tempurature+Difference+Percipitation+Humidity))
+summary(z<-lm(O_RushY~Tempurature+Humidity+Difference+Percipitation+Wind))
+vif(z)
+cor_test<-dplyr::select(MasterNoDome, Tempurature,Humidity,Percipitation,Wind,Difference)
+cor(cor_test)
+
+```
